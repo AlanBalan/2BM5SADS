@@ -2,6 +2,7 @@ package com.example.alanjwt.model;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -9,16 +10,16 @@ import java.util.List;
 
 @Entity(name = "pessoa")
 @Table(name = "pessoa")
-public class pessoa implements UserDetails {
+public class Pessoa implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String password;
     private String login;
-    private String Role;
+    private Enum role;
 
-    public pessoa () {}
+    public Pessoa() {}
 
     public Long getId() {
         return id;
@@ -26,7 +27,9 @@ public class pessoa implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        if(this.role == EnumRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),
+                new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     public String getPassword() {
@@ -35,7 +38,7 @@ public class pessoa implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "";
+        return login;
     }
 
     @Override
@@ -63,6 +66,6 @@ public class pessoa implements UserDetails {
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 }
