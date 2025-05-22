@@ -1,6 +1,5 @@
-package com.example.alanjwt.repository;
+package com.example.alanjwt.pessoa;
 
-import com.example.alanjwt.model.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

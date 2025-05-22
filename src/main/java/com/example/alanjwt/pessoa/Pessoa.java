@@ -1,4 +1,4 @@
-package com.example.alanjwt.model;
+package com.example.alanjwt.pessoa;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,12 +17,16 @@ public class Pessoa implements UserDetails {
     private Long id;
     private String password;
     private String login;
-    private Enum role;
+    private EnumRole role;
 
     public Pessoa() {}
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
@@ -34,6 +38,10 @@ public class Pessoa implements UserDetails {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -65,7 +73,16 @@ public class Pessoa implements UserDetails {
         return login;
     }
 
-    public String getRole() {
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public EnumRole getRole() {
         return role;
     }
+
+    public void setRole(String role) {
+        this.role = EnumRole.valueOf(role);
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.example.alanjwt.model;
+package com.example.alanjwt.pessoa;
 
 public enum EnumRole {
 

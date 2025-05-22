@@ -1,6 +1,5 @@
-package com.example.alanjwt.model;
+package com.example.alanjwt.pessoa;
 
-import com.example.alanjwt.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
